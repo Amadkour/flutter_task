@@ -1,7 +1,6 @@
 
 import '../../../../core/database/sql.dart';
 import '../../../../core/repo/profile_repo.dart';
-import '../model/Person_model.dart';
 import '../model/details_model.dart';
 import '../network/profile_api.dart';
 
@@ -11,7 +10,7 @@ class MyProfileRepo extends ProfileRepo {
     SqlDb db = SqlDb();
     List<Map> response = await db.readData('profile',id: personId);
 
-    if (true==true) {
+    if (response.isEmpty) {
       List<DetailsModel> persons = await ProfileAPI().getImages(personId.toString());
       db.insertData(
           tableName: 'profile',

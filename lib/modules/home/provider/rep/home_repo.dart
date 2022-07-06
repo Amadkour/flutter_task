@@ -1,6 +1,6 @@
 import '../../../../core/database/sql.dart';
 import '../../../../core/repo/person_repo.dart';
-import '../../../profile/provider/model/Person_model.dart';
+import '../model/Person_model.dart';
 import '../network/home_api.dart';
 
 class HomeRepo extends PersonRepo {

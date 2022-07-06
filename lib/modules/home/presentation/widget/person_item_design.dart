@@ -2,10 +2,9 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_task/core/constant/color.dart';
 import 'package:flutter_task/core/constant/strings.dart';
-import 'package:flutter_task/modules/profile/presentation/page/profile_screen.dart';
 import 'package:flutter_task/core/widget/my_image.dart';
 import '../../../../core/constant/routes.dart';
-import '../../../profile/provider/model/Person_model.dart';
+import '../../provider/model/Person_model.dart';
 
 class PersonItemDesign extends StatelessWidget {
   final PersonModel person;

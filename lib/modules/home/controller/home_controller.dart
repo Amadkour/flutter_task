@@ -1,8 +1,6 @@
-import 'package:flutter_task/core/repo/person_repo.dart';
-
-import '../../profile/provider/model/Person_model.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
+import '../provider/model/Person_model.dart';
 import '../provider/rep/home_repo.dart';
 
 

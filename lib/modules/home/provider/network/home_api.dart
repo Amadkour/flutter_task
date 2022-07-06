@@ -3,7 +3,7 @@ import 'dart:convert';
 import 'package:flutter_task/core/constant/strings.dart';
 import 'package:http/http.dart' as http;
 
-import '../../../profile/provider/model/Person_model.dart';
+import '../model/Person_model.dart';
 
 class HomeAPI {
   Future<List<PersonModel>> getPopularList(int pageNumber) async {

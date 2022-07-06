@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_task/core/repo/person_repo.dart';
 import 'package:flutter_task/core/repo/profile_repo.dart';
-import 'package:flutter_task/modules/profile/provider/model/Person_model.dart';
+import 'package:flutter_task/modules/home/provider/model/Person_model.dart';
 import 'package:flutter_task/modules/profile/provider/model/details_model.dart';
 ///-----------------Home
 
