@@ -11,7 +11,7 @@ class HomeRepo extends PersonRepo {
     if (response.isEmpty || response.length < (pageNumber - 1) * 20) {
       List<PersonModel> persons = await HomeAPI().getPopularList(pageNumber);
 
-      db.insertData(
+     await db.insertData(
           tableName: 'home',
           data: persons
               .map((e) =>
