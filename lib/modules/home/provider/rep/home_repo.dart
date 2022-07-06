@@ -24,10 +24,9 @@ class HomeRepo {
                   })
               .toList());
 
-      return response
-          .map((e) => PersonModel.fromJson(e))
+      return (await db.readData('home')).map((e) => PersonModel.fromJson(e))
           .toList()
-          .cast<PersonModel>().addAll(persons);
+          .cast<PersonModel>();
     } else {
       print('Loading from DB');
       return response
