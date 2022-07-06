@@ -1,22 +1,20 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:loadmore/loadmore.dart';
+import '../../../../core/widget/app_bar.dart';
 import '../../controller/home_controller.dart';
 import '../widget/person_item_design.dart';
 
 class HomeScreen extends ConsumerWidget {
-   HomeScreen({Key? key}) : super(key: key);
+  HomeScreen({Key? key}) : super(key: key);
+
   @override
   build(BuildContext context, watch) {
     return Scaffold(
-      appBar: AppBar(
-        backgroundColor: Colors.white,
-        elevation: 0.2,
-        title: const Text(
-          'Populars',
-          style: TextStyle(
-              color: Colors.black, fontSize: 30, fontWeight: FontWeight.bold),
-        ),
+      appBar:
+      MyAppBar(
+        title:'Populars' ,
+        hasBackButton: false,
       ),
       body: Padding(
         padding: const EdgeInsets.all(8.0),
@@ -28,20 +26,26 @@ class HomeScreen extends ConsumerWidget {
                 child: controller.when(
               data: (data) => data.isEmpty
                   ? const CircularProgressIndicator()
-                  :
-              LoadMore(
+                  : LoadMore(
                       isFinish: false,
-                      onLoadMore: ()async  {
-                        await Future.delayed(const Duration(seconds: 0, milliseconds: 2000)).then((value) =>
-                        context.read(pageNumber).state++);
+                      onLoadMore: () async {
+                        await Future.delayed(
+                                const Duration(seconds: 0, milliseconds: 2000))
+                            .then((value) => context.read(pageNumber).state++);
                         return false;
                       },
+                      textBuilder: DefaultLoadMoreTextBuilder.english,
                       child: ListView.separated(
-                        controller: ScrollController(keepScrollOffset: false,initialScrollOffset: ((data.length/20)-1)*1520.0),
+                        controller: ScrollController(
+                            keepScrollOffset: false,
+                            initialScrollOffset:
+                                ((data.length / 20) - 1) * 1600.0),
                         itemBuilder: (c, i) => PersonItemDesign(
                           person: data[i],
                         ),
-                        separatorBuilder: (c, i) => const Divider(height: 10,),
+                        separatorBuilder: (c, i) => const Divider(
+                          height: 10,
+                        ),
                         itemCount: data.length,
                       ),
                     ),

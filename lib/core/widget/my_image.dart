@@ -21,6 +21,7 @@ class MyImage extends StatelessWidget {
   final String? defaultUrl;
 
   final String? url;
+  final String? title;
 
   final Widget? defaultDesign;
 
@@ -36,6 +37,7 @@ class MyImage extends StatelessWidget {
     this.boarderRadius = 0.0,
     this.originalHeight,
     this.originalWidth,
+     this.title,
      this.canClick=false,
   }) : super(key: key);
 
@@ -106,6 +108,7 @@ class MyImage extends StatelessWidget {
                           url: defaultUrl!,
                           height: height,
                           width: width,
+                          title:title ,
                           fit: fit ?? BoxFit.contain,
                           color: AppColors.darkGreyColor,
                         );
@@ -170,7 +173,7 @@ class MyImage extends StatelessWidget {
           Navigator.pushNamed(
             context,
             Routes.fullScreenImage,
-            arguments: [ url!, originalWidth!,originalHeight!,],
+            arguments: [ url!, originalWidth!,originalHeight!,title],
           );
         }
       },

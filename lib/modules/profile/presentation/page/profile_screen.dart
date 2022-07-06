@@ -4,32 +4,22 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_task/core/constant/color.dart';
 import 'package:flutter_task/core/widget/my_image.dart';
 
+import '../../../../core/widget/app_bar.dart';
 import '../../controller/profile_controller.dart';
-import '../../provider/model/Person_model.dart';
 import '../widget/images_widget.dart';
 
 class ProfileScreen extends StatelessWidget {
+  const ProfileScreen({Key? key}) : super(key: key);
+
   @override
   build(BuildContext context) {
     final routeArgs = ModalRoute.of(context)!.settings.arguments as List;
     return Scaffold(
-        appBar: AppBar(
-          backgroundColor: Colors.white,
-          elevation: 0.2,
-          automaticallyImplyLeading: true,
-          leading: BackButton(
-            onPressed: () {
-              Navigator.pop(context);
-            },
-            color: AppColors.blackColor,
-          ),
-          title: Text(
-            routeArgs[0].name!,
-            style: const TextStyle(
-                color: Colors.black, fontSize: 30, fontWeight: FontWeight.bold),
-          ),
-          systemOverlayStyle: SystemUiOverlayStyle.dark,
+        appBar:
+        MyAppBar(
+          title:routeArgs[0].name ,
         ),
+
         body: Consumer(
           builder: (BuildContext context,
               T Function<T>(ProviderBase<Object?, T>) watch, Widget? child) {
@@ -39,7 +29,7 @@ class ProfileScreen extends StatelessWidget {
             final controller = watch(imagesController);
             return Center(
               child: controller.when(
-                data: (d) => Column(
+                data: (data) => Column(
                   children: [
                     Hero(
                       tag: 'profile',
@@ -52,6 +42,8 @@ class ProfileScreen extends StatelessWidget {
                         originalWidth: MediaQuery.of(context).size.width,
                         fit: BoxFit.fill,
                         boarderRadius: 50,
+                        title:routeArgs[0].name ,
+
                         canClick: true,
                       ),
                     ),
@@ -62,26 +54,13 @@ class ProfileScreen extends StatelessWidget {
                         fontSize: 20,
                       ),
                     ),
-                    Row(
-                      children: const [
-                        Padding(
-                          padding: EdgeInsets.all(8.0),
-                          child: Text(
-                            'All Images',
-                            textAlign: TextAlign.start,
-                            style: TextStyle(
-                                color: Colors.black,
-                                fontSize: 16,
-                                fontWeight: FontWeight.bold),
-                          ),
-                        ),
-                      ],
-                    ),
+
                     Flexible(
                       child: Padding(
                         padding: const EdgeInsets.all(8.0),
                         child: ImagesWidget(
-                          images: d,
+                          images: data,
+                           name: routeArgs[0].name ?? ''
                         ),
                       ),
                     ),

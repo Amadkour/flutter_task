@@ -28,10 +28,16 @@ class PersonItemDesign extends StatelessWidget {
               url: 'https://image.tmdb.org/t/p/w500/${person.profilePath}',
               height: 70,
               width: 70,
+              originalHeight: MediaQuery.of(context).size.height,
+              originalWidth: MediaQuery.of(context).size.width,
+              title: person.name!,
+              canClick: true,
               fit: BoxFit.fill,
             ),
           ),
-          const SizedBox(width: 10,),
+          const SizedBox(
+            width: 10,
+          ),
           Expanded(
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
