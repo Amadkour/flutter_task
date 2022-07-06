@@ -5,7 +5,7 @@ import 'package:flutter/services.dart';
 import '../constant/color.dart';
 
 class MyAppBar extends StatelessWidget implements PreferredSizeWidget {
-   MyAppBar(
+    MyAppBar(
       {Key? key, required this.title, this.hasBackButton = true, this.action})
       : preferredSize = const Size.fromHeight(kToolbarHeight);
 
@@ -29,10 +29,7 @@ class MyAppBar extends StatelessWidget implements PreferredSizeWidget {
           : null,
       actions: action != null ? [action!] : [],
       title: Text(
-        title,
-        style: const TextStyle(
-            color: Colors.black, fontSize: 30, fontWeight: FontWeight.bold),
-      ),
+        title,),
       systemOverlayStyle: SystemUiOverlayStyle.dark,
     );
   }

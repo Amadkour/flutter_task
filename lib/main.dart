@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:flutter_task/core/widget/full_screen_image.dart';
+import 'package:flutter_task/core/constant/them.dart';
 import 'core/constant/routes.dart';
 import 'modules/home/presentation/page/home_screen.dart';
 
@@ -16,11 +16,10 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Popular Persons',
       debugShowCheckedModeBanner: false,
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-      ),
+      theme:appTheme,
       initialRoute: Routes.home,
       routes:Routes.pageRoutes,
+
       home:  HomeScreen(),
     );
   }

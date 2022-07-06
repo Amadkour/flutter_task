@@ -26,21 +26,23 @@ class ImagesWidget extends StatelessWidget {
             ),
           ],
         ),
-        GridView.builder(
-          itemBuilder: (c, i) => MyImage(url:
-            'https://image.tmdb.org/t/p/w500/${images[i].filePath}',
-            originalWidth:images[i].width! ,
-            originalHeight: images[i].height!,
-            canClick: true,
-            title:name ,
+        Flexible(
+          child: GridView.builder(
+            itemBuilder: (c, i) => MyImage(url:
+              'https://image.tmdb.org/t/p/w500/${images[i].filePath}',
+              originalWidth:images[i].width! ,
+              originalHeight: images[i].height!,
+              canClick: true,
+              title:name ,
+            ),
+            itemCount: images.length,
+            gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                crossAxisCount: 4,
+                childAspectRatio: MediaQuery.of(context).size.width /
+                    (MediaQuery.of(context).size.width * 1.5),
+                mainAxisSpacing: 2,
+                crossAxisSpacing: 2),
           ),
-          itemCount: images.length,
-          gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-              crossAxisCount: 4,
-              childAspectRatio: MediaQuery.of(context).size.width /
-                  (MediaQuery.of(context).size.width * 1.5),
-              mainAxisSpacing: 2,
-              crossAxisSpacing: 2),
         ),
       ],
     ):
