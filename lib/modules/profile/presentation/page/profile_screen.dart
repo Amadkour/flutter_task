@@ -52,10 +52,10 @@ class ProfileScreen extends StatelessWidget {
                     ),
                     Text(
                       routeArgs[0].name ?? '',
-                      style: const TextStyle(
-                        color: Colors.black,
-                        fontSize: 20,
-                      ),
+                      style: Theme.of(context)
+                          .textTheme
+                          .headline6!
+                          .copyWith(color: AppColors.blackColor),
                     ),
 
                     Flexible(
