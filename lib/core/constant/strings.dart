@@ -4,6 +4,7 @@ abstract class AppStrings{
   static  String lang = 'ar';
   static  String currency = 'L.E';
   static Map<String,dynamic> translationModel={};
+  static String basUrl='https://api.themoviedb.org/3/person/';
 }
 
 abstract class EndPoints{
