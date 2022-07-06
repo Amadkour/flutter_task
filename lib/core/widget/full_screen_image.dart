@@ -7,40 +7,44 @@ import 'package:gallery_saver/gallery_saver.dart';
 import '../constant/color.dart';
 
 class FullScreenImage extends StatelessWidget {
-  const FullScreenImage({Key? key, required this.url, required this.height, required this.width}) : super(key: key);
-  final String url;
-  final double height;
-  final double width;
+
+
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-        appBar: AppBar(
-          backgroundColor: Colors.white,
-          elevation: 0.2,
-          automaticallyImplyLeading: true,
-          leading: BackButton(
-            onPressed: () {
-              Navigator.pop(context);
-            },
-            color: AppColors.blackColor,
-          ),
-          actions: [
-            IconButton(onPressed: (){
-              GallerySaver.saveImage(url).then((value) => print(value));
-  }, icon: const Icon(Icons.save_alt))
-          ],
-          // title: Text(
-          //   person.name!,
-          //   style: const TextStyle(
-          //       color: Colors.black, fontSize: 30, fontWeight: FontWeight.bold),
-          // ),
-          systemOverlayStyle: SystemUiOverlayStyle.dark,
-        ),
+    final routeArgs =
+    ModalRoute.of(context)!.settings.arguments as List;
 
+    return Scaffold(
+      appBar: AppBar(
+        backgroundColor: Colors.white,
+        elevation: 0.2,
+        automaticallyImplyLeading: true,
+        leading: BackButton(
+          onPressed: () {
+            Navigator.pop(context);
+          },
+          color: AppColors.blackColor,
+        ),
+        actions: [
+          IconButton(
+              onPressed: () {
+                GallerySaver.saveImage(routeArgs[0]).then((value) =>
+                    ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
+                      content: Text('Image Saved Successfully'),
+                      clipBehavior: Clip.antiAliasWithSaveLayer,
+                    )));
+              },
+              icon: const Icon(
+                Icons.save_alt,
+                color: Colors.black,
+              ))
+        ],
+        systemOverlayStyle: SystemUiOverlayStyle.dark,
+      ),
       body: MyImage(
-        url: url,
-        height: height,
-        width: width,
+        url: routeArgs[0],
+        height: routeArgs[2],
+        width: routeArgs[1],
       ),
     );
   }

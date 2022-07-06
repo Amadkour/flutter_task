@@ -4,6 +4,8 @@ import 'package:flutter_svg/svg.dart';
 import 'package:flutter_task/core/constant/color.dart';
 import 'package:flutter_task/core/widget/full_screen_image.dart';
 
+import '../constant/routes.dart';
+
 class MyImage extends StatelessWidget {
   final double? height;
 
@@ -165,14 +167,11 @@ class MyImage extends StatelessWidget {
                         ),
       onTap: () {
         if (canClick) {
-          Navigator.push(
-              context,
-              MaterialPageRoute(
-                  builder: (context) => FullScreenImage(
-                        url: url!,
-                        width: originalWidth!,
-                        height: originalHeight!,
-                      )));
+          Navigator.pushNamed(
+            context,
+            Routes.fullScreenImage,
+            arguments: [ url!, originalWidth!,originalHeight!,],
+          );
         }
       },
     );

@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_task/modules/profile/presentation/page/profile_screen.dart';
 import 'package:flutter_task/core/widget/my_image.dart';
+import '../../../../core/constant/routes.dart';
 import '../../../profile/provider/model/Person_model.dart';
 
 class PersonItemDesign extends StatelessWidget {
@@ -12,16 +13,19 @@ class PersonItemDesign extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return InkWell(
-      onTap: (){
-        Navigator.push(context, MaterialPageRoute(builder: (context) => ProfileScreen(person: person)));
+      onTap: () {
+        Navigator.pushNamed(
+          context,
+          Routes.profile,
+          arguments: [person],
+        );
       },
       child: Row(
         children: [
           ClipRRect(
             borderRadius: BorderRadius.circular(50),
             child: MyImage(
-             url:
-              'https://image.tmdb.org/t/p/w500/${person.profilePath}',
+              url: 'https://image.tmdb.org/t/p/w500/${person.profilePath}',
               height: 70,
               width: 70,
               fit: BoxFit.fill,
@@ -43,12 +47,10 @@ class PersonItemDesign extends StatelessWidget {
                   fontSize: 16,
                 ),
               ),
-
             ],
           ),
-         const Icon(Icons.arrow_forward_ios_rounded)
+          const Icon(Icons.arrow_forward_ios_rounded)
         ],
-
       ),
     );
   }

@@ -9,11 +9,11 @@ import '../../provider/model/Person_model.dart';
 import '../widget/images_widget.dart';
 
 class ProfileScreen extends StatelessWidget {
-  const ProfileScreen({required this.person, Key? key}) : super(key: key);
-  final PersonModel person;
 
   @override
   build(BuildContext context) {
+    final routeArgs =
+    ModalRoute.of(context)!.settings.arguments as List;
     return Scaffold(
         appBar: AppBar(
           backgroundColor: Colors.white,
@@ -26,7 +26,7 @@ class ProfileScreen extends StatelessWidget {
             color: AppColors.blackColor,
           ),
           title: Text(
-            person.name!,
+            routeArgs[0].name!,
             style: const TextStyle(
                 color: Colors.black, fontSize: 30, fontWeight: FontWeight.bold),
           ),
@@ -36,7 +36,7 @@ class ProfileScreen extends StatelessWidget {
           builder: (BuildContext context,
               T Function<T>(ProviderBase<Object?, T>) watch, Widget? child) {
             WidgetsBinding.instance.addPostFrameCallback((_) {
-              context.read(index).state = person.id!;
+              context.read(index).state = routeArgs[0].id!;
             });
             final controller=watch(imagesController);
             return Center(
@@ -47,14 +47,14 @@ class ProfileScreen extends StatelessWidget {
                           tag: 'profile',
                           child: MyImage(
                             url:
-                                'https://image.tmdb.org/t/p/w500/${person.profilePath}',
+                                'https://image.tmdb.org/t/p/w500/${routeArgs[0].profilePath}',
                             height: 100,
                             width: 100,
                             fit: BoxFit.fill,
                           ),
                         ),
                         Text(
-                          person.name ?? '',
+                          routeArgs[0].name ?? '',
                           style: const TextStyle(
                             color: Colors.black,
                             fontSize: 20,
