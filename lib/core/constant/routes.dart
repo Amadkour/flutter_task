@@ -11,7 +11,7 @@ class Routes {
 
   ///---------------------Screens----------------///
   static final Map<String, Widget Function(BuildContext)> pageRoutes = {
-    home: (context) => const HomeScreen(),
+    home: (context) =>  HomeScreen(),
     fullScreenImage: (context) => FullScreenImage(),
     profile: (context) => ProfileScreen(),
   };

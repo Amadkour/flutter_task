@@ -21,7 +21,7 @@ class MyApp extends StatelessWidget {
       ),
       initialRoute: Routes.home,
       routes:Routes.pageRoutes,
-      home: const HomeScreen(),
+      home:  HomeScreen(),
     );
   }
 }

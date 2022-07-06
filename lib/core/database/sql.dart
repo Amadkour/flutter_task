@@ -41,14 +41,14 @@ class SqlDb {
   }
 
   ///Example to get reade data ( await db.readData('tableName') )
-  readData(String tableName, {id}) async {
+  readData(String tableName, {id,limit}) async {
     Database mydb = await db;
     print(
         "-----------------------( Database ReadData )--------------------->DB($tableName)");
     List<Map>? response;
     try {
       response =
-          await mydb.query(tableName, where: id == null ? null : 'id = $id');
+          await mydb.query(tableName, where: id == null ? null : 'id = $id',limit:limit );
     } catch (e) {
       print(e);
     }
