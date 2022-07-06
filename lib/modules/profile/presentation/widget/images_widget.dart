@@ -18,7 +18,7 @@ class ImagesWidget extends StatelessWidget {
       gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
           crossAxisCount: 4,
           childAspectRatio: MediaQuery.of(context).size.width /
-              (MediaQuery.of(context).size.width * 1.2),
+              (MediaQuery.of(context).size.width * 1.5),
           mainAxisSpacing: 2,
           crossAxisSpacing: 2),
     );

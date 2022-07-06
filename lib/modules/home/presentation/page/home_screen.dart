@@ -12,24 +12,27 @@ class HomeScreen extends ConsumerWidget {
   build(BuildContext context, watch) {
     HomeController controller = watch(HomeControllerProvider);
     return Scaffold(
-      appBar: AppBar(
-        backgroundColor: Colors.white,
-        elevation: 0.2,
-        title: const Text('Populars',
-          style: TextStyle(
-            color: Colors.black,
-            fontSize: 30,
-            fontWeight: FontWeight.bold
+        appBar: AppBar(
+          backgroundColor: Colors.white,
+          elevation: 0.2,
+          title: const Text(
+            'Populars',
+            style: TextStyle(
+                color: Colors.black, fontSize: 30, fontWeight: FontWeight.bold),
           ),
         ),
-      ),
-        body: Center(
-      child: controller.persons.isEmpty
-          ? const CircularProgressIndicator()
-          : ListView.separated(
-              itemBuilder: (c, i) => PersonItemDesign(person: controller!.persons[i]!,),
-              separatorBuilder: (c, i) => const Divider(),
-              itemCount: controller.persons.length),
-    ));
+        body: Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: Center(
+            child: controller.persons.isEmpty
+                ? const CircularProgressIndicator()
+                : ListView.separated(
+                    itemBuilder: (c, i) => PersonItemDesign(
+                          person: controller!.persons[i]!,
+                        ),
+                    separatorBuilder: (c, i) => const Divider(),
+                    itemCount: controller.persons.length),
+          ),
+        ));
   }
 }

@@ -31,23 +31,27 @@ class PersonItemDesign extends StatelessWidget {
               fit: BoxFit.fill,
             ),
           ),
-          Column(
-            children: [
-              Text(
-                person.name ?? '',
-                style: const TextStyle(
-                  color: Colors.black,
-                  fontSize: 20,
+          const SizedBox(width: 10,),
+          Expanded(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  person.name ?? '',
+                  style: const TextStyle(
+                    color: Colors.black,
+                    fontSize: 20,
+                  ),
                 ),
-              ),
-              Text(
-                person.knownForDepartment ?? '',
-                style: const TextStyle(
-                  color: Colors.blueGrey,
-                  fontSize: 16,
+                Text(
+                  person.knownForDepartment ?? '',
+                  style: const TextStyle(
+                    color: Colors.blueGrey,
+                    fontSize: 16,
+                  ),
                 ),
-              ),
-            ],
+              ],
+            ),
           ),
           const Icon(Icons.arrow_forward_ios_rounded)
         ],
