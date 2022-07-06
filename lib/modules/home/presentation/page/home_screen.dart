@@ -5,11 +5,11 @@ import '../../../../core/widget/app_bar.dart';
 import '../../controller/home_controller.dart';
 import '../widget/person_item_design.dart';
 
-class HomeScreen extends ConsumerWidget {
+class HomeScreen extends StatelessWidget {
   HomeScreen({Key? key}) : super(key: key);
 
   @override
-  build(BuildContext context, watch) {
+  build(BuildContext context) {
     return Scaffold(
       appBar:
       MyAppBar(
