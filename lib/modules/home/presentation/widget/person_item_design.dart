@@ -1,5 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_task/core/constant/color.dart';
+import 'package:flutter_task/core/constant/strings.dart';
 import 'package:flutter_task/modules/profile/presentation/page/profile_screen.dart';
 import 'package:flutter_task/core/widget/my_image.dart';
 import '../../../../core/constant/routes.dart';
@@ -25,7 +27,7 @@ class PersonItemDesign extends StatelessWidget {
           ClipRRect(
             borderRadius: BorderRadius.circular(50),
             child: MyImage(
-              url: 'https://image.tmdb.org/t/p/w500/${person.profilePath}',
+              url: '${AppStrings.imageBaseUrl}${person.profilePath}',
               height: 70,
               width: 70,
               originalHeight: MediaQuery.of(context).size.height,
@@ -44,17 +46,18 @@ class PersonItemDesign extends StatelessWidget {
               children: [
                 Text(
                   person.name ?? '',
-                  style: const TextStyle(
-                    color: Colors.black,
-                    fontSize: 20,
-                  ),
+                  style: Theme.of(context)
+                      .textTheme
+                      .headline6!
+                      .copyWith(color: AppColors.blackColor),
                 ),
                 Text(
                   person.knownForDepartment ?? '',
-                  style: const TextStyle(
-                    color: Colors.blueGrey,
-                    fontSize: 16,
-                  ),
+                  style:
+                  Theme.of(context)
+                      .textTheme
+                      .headline6!
+                      .copyWith(color: AppColors.darkGreyColor,fontSize: 16,),
                 ),
               ],
             ),

@@ -5,8 +5,8 @@ abstract class AppStrings{
   static  String currency = 'L.E';
   static Map<String,dynamic> translationModel={};
   static String basUrl='https://api.themoviedb.org/3/person/';
+  static String imageBaseUrl='https://image.tmdb.org/t/p/w500/';
 }
-
 abstract class EndPoints{
   ///--------------------( base URL )----------------///
   static const String baseUrl = 'https://aliforas.com/api/';

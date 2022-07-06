@@ -32,10 +32,12 @@ class FullScreenImage extends StatelessWidget {
               color: Colors.black,
             )),
       ),
-      body: MyImage(
-        url: routeArgs[0],
-        height: routeArgs[2],
-        width: routeArgs[1],
+      body: Center(
+        child: MyImage(
+          url: routeArgs[0],
+          height: routeArgs[2],
+          width: routeArgs[1],
+        ),
       ),
     );
   }

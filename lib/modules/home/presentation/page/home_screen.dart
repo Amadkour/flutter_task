@@ -29,9 +29,9 @@ class HomeScreen extends ConsumerWidget {
                   : LoadMore(
                       isFinish: false,
                       onLoadMore: () async {
+                        context.read(pageNumber).state++;
                         await Future.delayed(
-                                const Duration(seconds: 0, milliseconds: 2000))
-                            .then((value) => context.read(pageNumber).state++);
+                                const Duration(seconds: 0, milliseconds: 2000));
                         return false;
                       },
                       textBuilder: DefaultLoadMoreTextBuilder.english,

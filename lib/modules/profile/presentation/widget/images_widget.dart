@@ -3,6 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_task/core/widget/my_image.dart';
 import 'package:flutter_task/modules/profile/provider/model/details_model.dart';
 
+import '../../../../core/constant/strings.dart';
+
 class ImagesWidget extends StatelessWidget {
   const ImagesWidget({Key? key, required this.images, required this.name}) : super(key: key);
   final List<DetailsModel> images;
@@ -29,7 +31,7 @@ class ImagesWidget extends StatelessWidget {
         Flexible(
           child: GridView.builder(
             itemBuilder: (c, i) => MyImage(url:
-              'https://image.tmdb.org/t/p/w500/${images[i].filePath}',
+              '${AppStrings.imageBaseUrl}${images[i].filePath}',
               originalWidth:images[i].width! ,
               originalHeight: images[i].height!,
               canClick: true,

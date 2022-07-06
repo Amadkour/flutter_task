@@ -1,16 +1,16 @@
 import 'package:flutter/material.dart';
 
+import '../../../core/repo/profile_repo.dart';
 import '../provider/model/details_model.dart';
 import '../provider/rep/profile_repo.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-final imagesController = FutureProvider<List<DetailsModel>>((ref) {
-  return ProfileController().getImages(ref.watch(index).state);
+///----------------repo provider---------------///
+final repositoryProvider = Provider((ref) => MyProfileRepo());
+///----------------person Id provider---------------///
+final personId = StateProvider((ref) => '1');
+///-------------------listen data--------------///
+final profileControllerProvider = FutureProvider<List<DetailsModel>>((ref) async {
+  final repository = ref.read(repositoryProvider);
+  return repository.fetchData( ref.watch(personId).state);
 });
-final index = StateProvider((ref) => '-1');
-
-class ProfileController {
-  Future<List<DetailsModel>> getImages(id) async {
-    return await ProfileRepo().getImages(id);
-  }
-}

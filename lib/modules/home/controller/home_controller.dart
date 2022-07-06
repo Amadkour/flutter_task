@@ -15,6 +15,6 @@ final pageNumber = StateProvider((ref) => 1);
 ///-------------------listen data--------------///
 final homeControllerProvider = FutureProvider<List<PersonModel>>((ref) async {
   final repository = ref.read(repositoryProvider);
-  return repository.fetchData( ref.read(pageNumber).state);
+  return repository.fetchData( ref.watch(pageNumber).state);
 });
 

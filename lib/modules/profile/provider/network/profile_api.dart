@@ -7,8 +7,12 @@ import 'package:http/http.dart' as http;
 import '../model/Person_model.dart';
 
 class ProfileAPI {
-  Future<List<DetailsModel>> getImages(id) async {
+  Future<List<DetailsModel>> getImages(String id) async {
+    print("-----------------------mu id is");
+    print(id);
+    print("-----------------------mu id is");
     http.Response response = await http.get(Uri.parse(
+        // '${AppStrings.basUrl}/37/images?api_key=bc2e1c95566cd043dbc378ad350737ce'));
         '${AppStrings.basUrl}$id/images?api_key=bc2e1c95566cd043dbc378ad350737ce'));
     return (jsonDecode(response.body))['profiles']
         .map((e) => DetailsModel.fromJson(e))

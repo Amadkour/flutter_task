@@ -4,6 +4,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_task/core/constant/color.dart';
 import 'package:flutter_task/core/widget/my_image.dart';
 
+import '../../../../core/constant/strings.dart';
 import '../../../../core/widget/app_bar.dart';
 import '../../controller/profile_controller.dart';
 import '../widget/images_widget.dart';
@@ -24,9 +25,11 @@ class ProfileScreen extends StatelessWidget {
           builder: (BuildContext context,
               T Function<T>(ProviderBase<Object?, T>) watch, Widget? child) {
             WidgetsBinding.instance.addPostFrameCallback((_) {
-              context.read(index).state = routeArgs[0].id!;
+              context.read(personId).state = routeArgs[0].id!;
             });
-            final controller = watch(imagesController);
+
+            final controller = watch(profileControllerProvider);
+
             return Center(
               child: controller.when(
                 data: (data) => Column(
@@ -35,7 +38,7 @@ class ProfileScreen extends StatelessWidget {
                       tag: 'profile',
                       child: MyImage(
                         url:
-                            'https://image.tmdb.org/t/p/w500/${routeArgs[0].profilePath}',
+                            '${AppStrings.imageBaseUrl}${routeArgs[0].profilePath}',
                         height: 100,
                         width: 100,
                         originalHeight: MediaQuery.of(context).size.height,
