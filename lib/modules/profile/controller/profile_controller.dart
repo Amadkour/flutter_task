@@ -1,6 +1,3 @@
-import 'package:flutter/material.dart';
-
-import '../../../core/repo/profile_repo.dart';
 import '../provider/model/details_model.dart';
 import '../provider/rep/profile_repo.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
