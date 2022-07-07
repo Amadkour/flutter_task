@@ -14,8 +14,8 @@ class SqlDb {
   }
 
   initialDb() async {
-    String databasepath = await getDatabasesPath();
-    String path = join(databasepath, 'ree.db');
+    String databasePath = await getDatabasesPath();
+    String path = join(databasePath, 'popular.db');
 
     Database mydb = await openDatabase(path, version: 3, onCreate: _onCreate);
     return mydb;
@@ -60,7 +60,7 @@ class SqlDb {
     Database mydb = await db;
     for (Map element in data) {
       await mydb.rawInsert(
-          "INSERT INTO $tableName VALUES('${element.values.join("','")}')");
+          "INSERT INTO $tableName VALUES(\"${element.values.join('","')}\")");
     }
     mydb.close();
   }

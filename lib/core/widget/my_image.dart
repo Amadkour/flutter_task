@@ -2,7 +2,6 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:flutter_task/core/constant/color.dart';
-import 'package:flutter_task/core/widget/full_screen_image.dart';
 
 import '../constant/routes.dart';
 

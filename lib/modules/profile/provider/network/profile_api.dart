@@ -6,11 +6,19 @@ import 'package:http/http.dart' as http;
 
 class ProfileAPI {
   Future<List<DetailsModel>> getImages(String id) async {
-    http.Response response = await http.get(Uri.parse(
-        '${AppStrings.basUrl}$id/images?api_key=bc2e1c95566cd043dbc378ad350737ce'));
-    return (jsonDecode(response.body))['profiles']
-        .map((e) => DetailsModel.fromJson(e))
-        .toList()
-        .cast<DetailsModel>();
+    try {
+      http.Response response = await http.get(Uri.parse(
+          '${AppStrings.basUrl}$id/images?api_key=bc2e1c95566cd043dbc378ad350737ce'));
+      if (response.statusCode == 200) {
+        return (jsonDecode(response.body))['profiles']
+            .map((e) => DetailsModel.fromJson(e))
+            .toList()
+            .cast<DetailsModel>();
+      } else {
+        return [];
+      }
+    } catch (_) {
+      return [];
+    }
   }
 }
